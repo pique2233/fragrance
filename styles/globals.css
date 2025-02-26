@@ -10,66 +10,6 @@
   box-sizing: border-box;
   font-family: 'Arial', '微软雅黑', sans-serif;
 }
- /* 品牌介绍内容区 */
- .brand-intro {
-  padding: 80px 8%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.brand-intro h2 {
-  font-size: 2.5rem;
-  color: var(--text-dark);
-  margin-bottom: 40px;
-  text-align: center;
-}
-
-.brand-intro p {
-  color: #666;
-  line-height: 1.8;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.brand-intro .intro-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  margin-bottom: 60px;
-}
-
-.intro-item {
-  text-align: center;
-}
-
-.intro-item h3 {
-  font-size: 1.5rem;
-  color: var(--text-dark);
-  margin-bottom: 20px;
-}
-
-.intro-item p {
-  color: #666;
-  line-height: 1.6;
-}
-
-.brand-images {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  margin-bottom: 80px;
-}
-
-.brand-images img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  transition: transform 0.3s;
-}
-
-.brand-images img:hover {
-  transform: translateY(-5px);
-}
 
 /* 导航栏 */
 .nav-left {
@@ -129,9 +69,6 @@
   gap: 25px;
 }
 
-.language-switch{
-  color:#fff;
-}
 /* 主视觉区 */
 .main-visual {
   position: relative;

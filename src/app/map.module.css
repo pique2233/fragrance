@@ -1,0 +1,93 @@
+/* src/app/map/map.module.css */
+.mainVisual {
+    position: relative;
+    height: 70vh;
+    overflow: hidden;
+  }
+  
+  .mainBanner {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: zoomIn 8s infinite alternate;
+  }
+  
+  .mainText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  @keyframes zoomIn {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.05);
+    }
+  }
+  
+  .chinaMap {
+    width: 100%;
+    height: 800px;
+    margin: 50px 0;
+    padding: 0 8%;
+  }
+  
+  .provinceModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    max-width: 1000px;
+    height: 80vh;
+    max-height: 1000px;
+    background: white;
+    padding: 40px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    z-index: 2000;
+    border-radius: 10px;
+  }
+  
+  .modalContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    height: 100%;
+    overflow-y: auto;
+  }
+  
+  .scentProfiles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+  }
+  
+  .scentProfile {
+    padding: 20px;
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    transition: transform 0.3s;
+  }
+  
+  .scentProfile:hover {
+    transform: translateY(-5px);
+  }
+  
+  .closeButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 8px 20px;
+    background: #7a6952;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+  }
