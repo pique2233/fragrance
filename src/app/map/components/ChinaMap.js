@@ -13,10 +13,20 @@ export default function ChinaMap() {
   const chartRef = useRef(null);
   
   // 直接调用阿里云接口 
-  const { data: geoJson, error } = useSWR(
-    'https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json', 
-    url => fetch(url).then(res => res.json()), 
-    { dedupingInterval: 600_000 } // 10分钟缓存 
+  // components/ChinaMap.js  
+const { data: geoJson, error } = useSWR(
+    '/api/geo-proxy', // 调用本地接口 
+    url => fetch(url).then(res => {
+      if (!res.ok)  throw new Error(`地图数据加载失败 (HTTP ${res.status})`); 
+      return res.json(); 
+    }),
+    {
+      dedupingInterval: 600_000, // 10分钟缓存 
+      fallbackData: { 
+        type: "FeatureCollection",
+        features: [] // 本地备份数据 
+      }
+    }
   );
  
   // 渲染逻辑 
