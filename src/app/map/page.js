@@ -1,4 +1,3 @@
-//map/page.js
 "use client";
 import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
@@ -29,7 +28,8 @@ const ProvinceDetail = dynamic(
   }
 );
 
-export default function MapPage() {
+// 将页面内容提取到一个独立的客户端组件中
+function PageContent() {
   const params = useSearchParams();
   const province = params.get('province');
 
@@ -49,12 +49,19 @@ export default function MapPage() {
             </span>
           </h3>
           
-          <Suspense fallback={<LoadingSpinner />}>
-            <ChinaMap />
-            {province && <ProvinceDetail province={province} />}
-          </Suspense>
+          <ChinaMap />
+          {province && <ProvinceDetail province={province} />}
         </div>
       </section>
     </>
+  );
+}
+
+// 主页面组件，包裹在 Suspense 中
+export default function MapPage() {
+  return (
+    <Suspense fallback={<LoadingSpinner />}>
+      <PageContent />
+    </Suspense>
   );
 }

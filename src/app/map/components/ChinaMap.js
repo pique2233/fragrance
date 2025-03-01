@@ -1,4 +1,3 @@
-//ChinaMap.js
 'use client';
 import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
@@ -92,7 +91,6 @@ export default function ChinaMap() {
 
     const handleClick = (params) => {
       const provinceEN = provinceMap[params.name] || params.name.toLowerCase();
-      // 更新 URL 参数，不跳转页面
       router.push(`/map?province=${provinceEN}`, { scroll: false });
     };
 
