@@ -1,54 +1,36 @@
-// src/app/map/components/ProvinceModal.js
-"use client";
-
-import { useEffect, useState } from 'react';
-import styles from '../map.module.css';
-
-export default function ProvinceModal() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [province, setProvince] = useState(null);
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    const handleShowProvinceDetail = (event) => {
-      setProvince(event.detail.province);
-      setData(event.detail.data);
-      setIsOpen(true);
-    };
-
-    window.addEventListener('showProvinceDetail', handleShowProvinceDetail);
-    return () => window.removeEventListener('showProvinceDetail', handleShowProvinceDetail);
-  }, []);
-
-  if (!isOpen || !data) return null;
-
+'use client';
+import { motion } from 'framer-motion';
+ 
+export default function ProvinceModal({ data, onClose }) {
   return (
-    <div className={styles.provinceModal}>
-      <div className={styles.modalContent}>
-        <div className={styles.modalImage}>
-          <img src={data.image} alt={province} />
-        </div>
-        <div className={styles.modalText}>
-          <h2>{province}</h2>
-          <p>{data.description}</p>
-          <div className={styles.scentProfiles}>
-            {data.scents.map((scent, index) => (
-              <div key={index} className={styles.scentProfile}>
-                <h3>{scent.name}</h3>
-                <ul>
-                  {scent.notes.map((note, i) => (
-                    <li key={i}>{note}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+    <motion.div  
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center"
+    >
+      <motion.div  
+        initial={{ scale: 0.8 }}
+        animate={{ scale: 1 }}
+        className="bg-white rounded-xl w-[90%] max-w-3xl p-6 relative"
+      >
+        {/* 内容区与之前版本保持一致 */}
+        <button onClick={onClose} className="absolute top-4 right-4 text-2xl">
+          &times;
+        </button>
+        <div className="grid md:grid-cols-2 gap-8">
+          <img 
+            src={data.imageUrl} 
+            alt={data.name} 
+            className="rounded-lg h-64 object-cover"
+            loading="lazy"
+          />
+          <div className="space-y-4">
+            <h2 className="text-3xl font-bold">{data.name}</h2> 
+            <p className="text-gray-600">{data.description}</p> 
           </div>
-          <button onClick={() => window.open(data.pdf, '_blank')}>查看完整报告</button>
         </div>
-      </div>
-      <button className={styles.closeButton} onClick={() => setIsOpen(false)}>
-        关闭
-      </button>
-    </div>
+      </motion.div> 
+    </motion.div> 
   );
 }

@@ -1,0 +1,15 @@
+
+{
+    "北京市": {
+      "title": "皇城古韵",
+      "content": [
+        "中国政治文化中心，拥有3000余年建城史",
+        "世界文化遗产数量全球第一：故宫、长城、颐和园等",
+        "2024年GDP总量达4.5万亿元，人均GDP超18万元"
+      ],
+      "images": [
+        "/images/provinces/beijing-1.jpg", 
+        "/images/provinces/beijing-2.jpg" 
+      ]
+    }
+  }

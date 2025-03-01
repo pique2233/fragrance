@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/echarts": "^4.9.17",
     "dynamic": "^4.2.2",
-    "echarts": "^5.6.0",
+    "echarts": "5.4.3",
     "echarts-for-react": "^3.0.2",
+    "framer-motion": "^12.4.7",
     "leaflet": "^1.9.4",
     "next": "15.1.7",
     "react": "^19.0.0",
