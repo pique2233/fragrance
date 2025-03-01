@@ -248,7 +248,7 @@ footer {
 }
 
 .language-switch {
-  background-color: #fff;
+  background-color: #000000;
   border: #fff;
 }
 
@@ -480,4 +480,214 @@ footer {
 /* 强制保留空格 */
 .whitespace-pre-wrap {
   white-space: pre-wrap;
+}
+
+/* 移动优先的响应式调整 */
+@media (max-width: 768px) {
+  /* 通用调整 */
+  :root {
+    font-size: 14px;
+  }
+
+  /* 主视觉区 */
+  .main-visual {
+    height: 70vh;
+  }
+
+  /* 导航栏 */
+  .navbar {
+    padding: 15px 5%;
+    position: relative;
+  }
+  
+  .nav-links {
+    display: none; /* 移动端建议隐藏导航或改为汉堡菜单 */
+  }
+
+  /* 文化展示区块 */
+  .culture-section {
+    flex-direction: column;
+    padding: 40px 5%;
+    gap: 30px;
+  }
+
+  .culture-content {
+    min-width: unset;
+    order: 2;
+  }
+
+  .culture-image {
+    height: 300px;
+    width: 100%;
+    order: 1;
+  }
+
+  .culture-title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+
+  /* 品牌介绍区块 */
+  .brand-intro {
+    padding: 40px 5%;
+  }
+
+  .brand-intro h2 {
+    font-size: 1.8rem;
+  }
+
+  .brand-intro .intro-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  /* 双图区块 */
+  .double-image {
+    grid-template-columns: 1fr;
+    padding: 40px 5%;
+  }
+
+  .double-image img {
+    height: 300px;
+  }
+
+  /* 全宽文字图片 */
+  .full-width-section {
+    margin: 50px 0;
+  }
+
+  .craft-image {
+    height: 400px;
+  }
+
+  .craft-text {
+    top: 20%;
+    left: 5%;
+    padding-right: 5%;
+  }
+
+  /* 底部 */
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 中等屏幕适配 */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .culture-image {
+    height: 400px;
+  }
+  
+  .double-image img {
+    height: 400px;
+  }
+
+  .brand-intro .intro-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 新增移动端通用样式 */
+/* 触摸优化 */
+button, .culture-link {
+  min-height: 44px; /* Apple人机指南推荐的最小触摸尺寸 */
+}
+
+/* 移动端图片优化 */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 防止横屏时字体过大 */
+@media screen and (orientation: landscape) {
+  body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+}
+
+/* 移动端滚动优化 */
+html {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 输入元素优化 */
+input, textarea {
+  font-size: 16px; /* 防止iOS缩放 */
+}
+/* globals.css 新增内容 */
+/* 移动端导航样式 */
+.hamburger-btn {
+  padding: 12px;
+  z-index: 1000;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 80%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+  transition: left 0.3s ease;
+  z-index: 999;
+  padding-top: 80px;
+}
+
+.mobile-menu.open {
+  left: 0;
+}
+
+.mobile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 20px;
+}
+
+.mobile-links a {
+  color: white;
+  font-size: 1.2rem;
+  padding: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* 响应式显示控制 */
+@media (max-width: 768px) {
+  .nav-links:not(.mobile-links),
+  .icons-container:not(.language-switch-mobile) {
+    display: none;
+  }
+  
+  .nav-right {
+    gap: 15px;
+  }
+}
+
+@media (min-width: 769px) {
+  .hamburger-btn,
+  .mobile-menu,
+  .language-switch-mobile {
+    display: none;
+  }
+}
+
+/* 移动端语言切换 */
+.language-switch-mobile {
+  color: white;
+  background: transparent;
+  padding: 8px 15px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 20px;
+}
+
+/* 优化点击区域 */
+.icon, .hamburger-btn, .language-switch {
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
