@@ -13,57 +13,61 @@ export default function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="nav-left">
+      {/* 左侧容器 */}
+      <div className="nav-left flex-1 flex items-center gap-8">
         <Link href="/">
-          <img src="/pic/logo.png" className="logo" alt="观夏" />
+          <img src="/pic/logo.png" className="logo h-12" alt="观夏" />
         </Link>
-        
-        {/* 桌面导航 */}
-        <div className="nav-links hidden md:flex">
-          <Link href="/products">文化</Link>
-          <Link href="/">产品</Link>
-          <Link href="/map">气味地图</Link>
-          <Link href="/about">品牌介绍</Link>
+
+        {/* 桌面导航（仅在md以上显示） */}
+        <div className="hidden md:flex gap-6 nav-links desktop-links">
+          <Link href="/products" className="nav-link">文化</Link>
+          <Link href="/" className="nav-link">产品</Link>
+          <Link href="/map" className="nav-link">气味地图</Link>
+          <Link href="/about" className="nav-link">品牌介绍</Link>
         </div>
       </div>
 
-      {/* 移动汉堡菜单按钮 */}
-      <button 
-        className="md:hidden hamburger-btn"
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-        aria-label="导航菜单"
-      >
-        <i className={`ri-${isMenuOpen ? 'close' : 'menu'}-line text-white text-xl`} />
-      </button>
-
-      {/* 移动端导航菜单 */}
-      <div className={`md:hidden mobile-menu ${isMenuOpen ? 'open' : ''}`}>
-        <div className="mobile-links">
-          <Link href="/products" onClick={() => setIsMenuOpen(false)}>产品</Link>
-          <Link href="/" onClick={() => setIsMenuOpen(false)}>文化</Link>
-          <Link href="/map" onClick={() => setIsMenuOpen(false)}>气味地图</Link>
-          <Link href="/about" onClick={() => setIsMenuOpen(false)}>品牌介绍</Link>
-        </div>
-      </div>
-
-      <div className="nav-right">
-        {/* 桌面图标 */}
-        <div className="hidden md:flex icons-container">
-          <i className="ri-wechat-line icon" />
-          <i className="ri-phone-line icon" />
-          <i className="ri-mail-line icon" />
-          <button className="language-switch" onClick={toggleLanguage}>
+      {/* 右侧容器 */}
+      <div className="nav-right flex items-center gap-6">
+        {/* 桌面图标（仅在md以上显示） */}
+        <div className="hidden md:flex items-center gap-4">
+          <i className="ri-wechat-line text-white cursor-pointer" />
+          <i className="ri-phone-line text-white cursor-pointer" />
+          <i className="ri-mail-line text-white cursor-pointer" />
+          <button 
+            onClick={toggleLanguage}
+            className="language-switch px-3 py-1 rounded-md"
+          >
             {currentLang.toUpperCase()}
           </button>
         </div>
 
-        {/* 移动端语言切换 */}
+        {/* 移动端语言切换（仅在md以下显示） */}
         <button 
-          className="md:hidden language-switch-mobile" 
+          className="md:hidden language-switch-mobile"
           onClick={toggleLanguage}
         >
           {currentLang.toUpperCase()}
         </button>
+
+        {/* 汉堡菜单按钮（仅在md以下显示） */}
+        <button 
+          className="md:hidden hamburger-btn p-2"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          <i className={`ri-${isMenuOpen ? 'close' : 'menu'}-line text-white text-xl`} />
+        </button>
+      </div>
+
+      {/* 移动端导航菜单（固定在左侧） */}
+      <div className={`md:hidden mobile-menu ${isMenuOpen ? 'open' : ''}`}>
+        <div className="mobile-links flex flex-col gap-4 p-6">
+          <Link href="/products" onClick={() => setIsMenuOpen(false)}>文化</Link>
+          <Link href="/" onClick={() => setIsMenuOpen(false)}>产品</Link>
+          <Link href="/map" onClick={() => setIsMenuOpen(false)}>气味地图</Link>
+          <Link href="/about" onClick={() => setIsMenuOpen(false)}>品牌介绍</Link>
+        </div>
       </div>
     </nav>
   );

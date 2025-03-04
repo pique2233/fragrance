@@ -78,10 +78,6 @@
   gap: 20px;
 }
 
-.nav-links {
-  display: flex;
-  gap: 30px;
-}
 
 .logo {
   height: 50px;
@@ -500,9 +496,7 @@ footer {
     position: relative;
   }
   
-  .nav-links {
-    display: none; /* 移动端建议隐藏导航或改为汉堡菜单 */
-  }
+
 
   /* 文化展示区块 */
   .culture-section {
@@ -691,3 +685,120 @@ input, textarea {
   align-items: center;
   justify-content: center;
 }
+/* 导航栏核心修复 */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  background: rgba(0, 0, 0, 0.95);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* 桌面导航链接悬停动画 */
+.nav-link {
+  position: relative;
+  color: white;
+  padding-bottom: 4px;
+  transition: color 0.3s;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--primary-color);
+  transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* 移动菜单优化 */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 70%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.97);
+  backdrop-filter: blur(12px);
+  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding-top: 6rem;
+}
+
+.mobile-menu.open {
+  left: 0;
+}
+
+.mobile-links a {
+  color: white;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  transition: background 0.3s;
+}
+
+/* 断点修复 */
+@media (min-width: 768px) {
+  .hamburger-btn,
+  .language-switch-mobile,
+  .mobile-menu {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .nav-links.desktop-links {
+    display: none !important;
+  }
+}
+.mobile-menu:not(.open) {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+@media (max-width: 767px) {
+   .nav-links.desktop-links {
+     display: none !important;
+    }
+  }
+  @media (max-width: 767px) {
+    .nav-links.desktop-links {
+      display: none !important;
+    }
+    .language-switch {
+      display: none !important;
+    }
+  }
+  
+  .mobile-menu:not(.open) {
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 15px;
+    position: relative;
+    margin: 0 15px; /* 增加左右间隔 */
+  }
+  
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--primary-color);
+    transition: width 0.3s;
+  }
+  
+  .nav-links a:hover::after {
+    width: 100%;
+  }
