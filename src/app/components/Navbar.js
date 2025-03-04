@@ -20,8 +20,8 @@ export default function Navbar() {
         
         {/* 桌面导航 */}
         <div className="nav-links hidden md:flex">
-          <Link href="/products">产品</Link>
-          <Link href="/">文化</Link>
+          <Link href="/products">文化</Link>
+          <Link href="/">产品</Link>
           <Link href="/map">气味地图</Link>
           <Link href="/about">品牌介绍</Link>
         </div>
