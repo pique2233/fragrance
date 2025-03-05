@@ -47,77 +47,93 @@ export default function ProvinceDetail({ province }) {
 
         <div className="modal-content">
           {/* 主图 */}
-          <div className="modal-image-container">
-            <Image
-              src={data.mainImage}
-              alt={data.chineseName}
-              fill
-              priority
-              sizes="(max-width: 768px) 100vw, 80vw"
-            />
-          </div>
+          {data.mainImage && (
+            <div className="modal-image-container">
+              <Image
+                src={data.mainImage}
+                alt={data.chineseName}
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 80vw"
+              />
+            </div>
+          )}
 
           {/* 气味镜头区块 */}
-          <section className="mb-10">
-            <h3 className="text-xl font-semibold border-l-4 border-amber-500 pl-3 mb-6">
-              🌀 气味镜头
-            </h3>
-            <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 items-start">
-              {/* 文字描述 */}
-              <p className="text-gray-600 leading-relaxed text-justify whitespace-pre-wrap">
-                {renderDescription(data.scentLens.description)}
-              </p>
+          {data.scentLens && (data.scentLens.description || data.scentLens.image) && (
+            <section className="mb-10">
+              <h3 className="text-xl font-semibold border-l-4 border-amber-500 pl-3 mb-6">
+                🌀 气味镜头
+              </h3>
+              <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 items-start">
+                {/* 文字描述 */}
+                {data.scentLens.description && (
+                  <p className="text-gray-600 leading-relaxed text-justify whitespace-pre-wrap">
+                    {renderDescription(data.scentLens.description)}
+                  </p>
+                )}
 
-              {/* 图片容器 */}
-              <div className="relative aspect-video lg:aspect-square rounded-xl overflow-hidden bg-gray-100 transition-all hover:shadow-lg">
-                <Image
-                  src={data.scentLens.image}
-                  alt="气味镜头示意图"
-                  fill
-                  className="object-cover object-center"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
-                />
+                {/* 图片容器 */}
+                {data.scentLens.image && (
+                  <div className="relative aspect-video lg:aspect-square rounded-xl overflow-hidden bg-gray-100 transition-all hover:shadow-lg">
+                    <Image
+                      src={data.scentLens.image}
+                      alt="气味镜头示意图"
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      priority
+                    />
+                  </div>
+                )}
               </div>
-            </div>
-          </section>
+            </section>
+          )}
 
           {/* 文化链接 */}
-          <section className="mb-10">
-            <h3 className="text-xl font-semibold border-l-4 border-green-500 pl-3 mb-4">
-              📜 文化链接
-            </h3>
-            <p className="text-gray-600 leading-relaxed whitespace-pre-wrap">
-              {renderDescription(data.culturalLinks.description)}
-            </p>
-          </section>
+          {data.culturalLinks && data.culturalLinks.description && (
+            <section className="mb-10">
+              <h3 className="text-xl font-semibold border-l-4 border-green-500 pl-3 mb-4">
+                📜 文化链接
+              </h3>
+              <p className="text-gray-600 leading-relaxed whitespace-pre-wrap">
+                {renderDescription(data.culturalLinks.description)}
+              </p>
+            </section>
+          )}
 
           {/* 香气匹配 */}
-          <section>
-            <h3 className="text-xl font-semibold border-l-4 border-purple-500 pl-3 mb-6">
-              💫 香气匹配
-            </h3>
-            <div className="grid grid-cols-1 gap-8">
-              {data.aromaMatches.map((match, index) => (
-                <div key={index} className="aroma-match-card bg-gray-50 p-4 rounded-xl">
-                  <div className="space-y-2">
-                    <p className="text-gray-600 leading-relaxed whitespace-pre-wrap">
-                      {renderDescription(match.description)}
-                    </p>
-                    <div className="relative aspect-lock md:aspect-square rounded-lg overflow-hidden">
-                      <Image
-                        src={match.image}
-                        alt={`香气匹配 ${index + 1}`}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                      />
+          {data.aromaMatches && data.aromaMatches.length > 0 && (
+            <section>
+              <h3 className="text-xl font-semibold border-l-4 border-purple-500 pl-3 mb-6">
+                💫 香气匹配
+              </h3>
+              <div className="grid grid-cols-1 gap-8">
+                {data.aromaMatches.map((match, index) => (
+                  <div key={index} className="aroma-match-card bg-gray-50 p-4 rounded-xl">
+                    <div className="space-y-2">
+                      {match.description && (
+                        <p className="text-gray-600 leading-relaxed whitespace-pre-wrap">
+                          {renderDescription(match.description)}
+                        </p>
+                      )}
+                      {match.image && (
+                        <div className="relative aspect-lock md:aspect-square rounded-lg overflow-hidden">
+                          <Image
+                            src={match.image}
+                            alt={`香气匹配 ${index + 1}`}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                          />
+                        </div>
+                      )}
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          </section>
+                ))}
+              </div>
+            </section>
+          )}
         </div>
       </div>
     </div>
