@@ -36,10 +36,11 @@ function PageContent() {
   return (
     <>
       <MainVisual 
-        banner="/pic/products-banner.jpg"
-        title="原料地理溯源系统"
-        subtitle="探寻每一滴香气的源头故事"
-      />
+             banner="/pic/logo2.png"
+             title="气味地图"
+             subtitle="Scent map"
+           />
+           
 
       <section className="container mx-auto px-4 py-16 relative">
         <div className="max-w-5xl mx-auto">

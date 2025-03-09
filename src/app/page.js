@@ -4,11 +4,15 @@ import CultureSection from './components/CultureSection';
 
 const Page = () => (
   <div>
-    <MainVisual />
+     <MainVisual 
+            banner="/pic/logo2.png"
+            title="产品"
+            subtitle="Products"
+          />
     <CultureSection
       title="系列介绍"
       description="本系列以中国非物质文化遗产为核心概念，旨在以嗅觉重构“非遗即日常”的东方美学叙事。"
-      imgUrl="taoci.png"
+      imageUrl="/pic/p1.png"
     />
     <CultureSection
       title="系列概念"
@@ -17,7 +21,7 @@ const Page = () => (
 「南柯遗梦」将匠人指尖的温度、失传的香方密码、文明的余晖，
 凝练为可佩戴的“嗅觉史诗”。
 让每一缕香，穿越千年，唤醒那封尘已久的文化记忆"
-      imgUrl="taoci.png"
+        imageUrl="/pic/p2.png"
     />
     <CultureSection
       title="品牌寄语"
@@ -25,7 +29,7 @@ const Page = () => (
 而在日常的呼吸之间。
 当一缕香成为跨越千年的信使，
 文明的基因便永远鲜活。"
-      imgUrl="/pic/taoci.png"
+        imageUrl="/pic/p3.png"
     />
   </div>
 );
