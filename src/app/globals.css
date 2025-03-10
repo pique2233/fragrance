@@ -248,7 +248,6 @@ footer {
   border: #fff;
 }
 
-/* 文化展示区块 */
 .culture-section {
   display: flex;
   align-items: center;
@@ -281,20 +280,6 @@ footer {
   color: #666;
   line-height: 1.8;
   margin-bottom: 30px;
-}
-
-.culture-link {
-  display: inline-block;
-  padding: 12px 35px;
-  background: var(--primary-color);
-  color: white;
-  text-decoration: none;
-  border-radius: 25px;
-  transition: opacity 0.3s;
-}
-
-.culture-link:hover {
-  opacity: 0.9;
 }
 /* ====== 弹窗专用样式 ====== */
 /* 弹窗遮罩层 */
@@ -566,18 +551,28 @@ footer {
   }
 }
 
-/* 中等屏幕适配 */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .culture-image {
-    height: 400px;
-  }
-  
-  .double-image img {
-    height: 400px;
+/* 移动端布局调整 */
+@media (max-width: 768px) {
+  .culture-section {
+    flex-direction: column;
+    padding: 40px 5%;
+    gap: 30px;
   }
 
-  .brand-intro .intro-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .culture-content {
+    min-width: unset;
+    order: 2;
+  }
+
+  .culture-image {
+    height: 300px;
+    width: 100%;
+    order: 1;
+  }
+
+  .culture-title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
   }
 }
 
