@@ -4,6 +4,7 @@ import { useSearchParams } from 'next/navigation';
 import MainVisual from '../components/MainVisual';
 import LoadingSpinner from '../components/LoadingSpinner';
 import dynamic from 'next/dynamic';
+import CommentSection from './components/CommentSection';
 
 const ChinaMap = dynamic(
   () => import('./components/ChinaMap'),
@@ -40,8 +41,10 @@ function PageContent() {
              title="气味地图"
              subtitle="Scent map"
            />
-           
-
+      
+           <div className="container mx-auto">
+    
+    </div>
       <section className="container mx-auto px-4 py-16 relative">
         <div className="max-w-5xl mx-auto">
           <h3 className="text-2xl md:text-3xl font-bold text-center mb-12">
@@ -54,6 +57,7 @@ function PageContent() {
           {province && <ProvinceDetail province={province} />}
         </div>
       </section>
+      <CommentSection />
     </>
   );
 }

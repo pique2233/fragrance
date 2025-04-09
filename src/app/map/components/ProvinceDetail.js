@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { provinceData } from './provinces';
-
+import CommentSection from './CommentSection';
 export default function ProvinceDetail({ province }) {
   const router = useRouter();
   const data = provinceData[province];
@@ -134,7 +134,9 @@ export default function ProvinceDetail({ province }) {
               </div>
             </section>
           )}
+              <CommentSection />
         </div>
+     
       </div>
     </div>
   );

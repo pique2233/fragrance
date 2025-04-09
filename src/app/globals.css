@@ -797,3 +797,8 @@ input, textarea {
   .nav-links a:hover::after {
     width: 100%;
   }
+
+  .comment-section {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
