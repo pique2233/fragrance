@@ -15,7 +15,6 @@ export default function ProductsPage() {
         <img src="/pic/a1.png" alt="天然原料" />
         <img src="/pic/a2.png" alt="制作工艺" />
       </section>
-      <CommentSection />
 
       {/* 全宽文字图片 */}
       <div className="full-width-section">
